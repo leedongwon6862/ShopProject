@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 목록 리스트</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="~{ nav::navbar}"></div>
+<div class="card" th:each="i : ${items}">
+    <img src="https://placehold.co/300" alt="">
+    <div>
+        <a th:href="@{|/product/detail/${i.id}|}">
+            <h4 th:text="${i.title}">바지</h4>
+        </a>
+        <p th:text="${i.price}">7억</p>
+        <a th:href="@{|/product/edit/${i.id}|}">수정</a>
+        <div>
+            <a th:href="@{|/product/delete/${i.id}|}">삭제</a>
+        </div>
+
+    </div>
+
+
+
+</div>
+</body>
+</html>
