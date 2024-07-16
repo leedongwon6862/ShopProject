@@ -11,7 +11,7 @@ import lombok.ToString;
 @Entity
 @Setter
 @Getter
-@ToString //object 변수 한눈에 보고 싶으면 .toString() 생략 가능 으로 출력 해주는 이노 테이션
+@ToString //object(객체) 변수 한눈에 보고 싶으면 .toString() 생략 가능 으로 출력 해주는 이노 테이션
 public class Item {
 
     @Id // id 컬럼엔 @Id 붙이기 강요.

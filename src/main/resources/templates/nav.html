@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,6 +9,10 @@
     <a class="logo" href="/product/list">SpringMall</a>
     <a href="/product/list">List</a>
     <a href="/product/write">Write</a>
+    <a href="/register">회원가입</a>
+    <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+    <a href="/my-page">마이페이지</a>
 </div>
 </body>
 </html>
