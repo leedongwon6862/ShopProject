@@ -15,15 +15,16 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
-//implements 는 클래스 가 interface 따라 하나 검사 해주 세요
+    //implements 는 클래스 가 interface 따라 하나 검사 해주 세요
     private final MemberRepository memberRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        DB에서 username을 가진 유저를 찾아와서
 //        return new User(유저아이디, 비번, 권한) 해주세요
 
         var result = memberRepository.findByUsername(username);
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             throw new UsernameNotFoundException("그런 아이디 없음");
         }
         var user = result.get();
@@ -31,18 +32,12 @@ public class MyUserDetailsService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("일반유저"));
 
 
-        var a= new CustomUser(user.getUsername(),user.getPassword(),authorities);
-        a.displayName=user.getDisplayName();
+        var a = new CustomUser(user.getUsername(), user.getPassword(), authorities);
+        a.displayName = user.getDisplayName();
         return a;
     }
-
-    class CustomUser extends User {
-        public String displayName;
-        public CustomUser(String username,
-                          String password,
-                          List<GrantedAuthority> authorities ) {
-            super(username, password, authorities);
-        }
-    }
 }
+
+
+
 

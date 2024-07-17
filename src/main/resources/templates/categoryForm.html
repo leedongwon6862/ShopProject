@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>상품 추가</title>
+    <title>카테고리 생성</title>
     <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 <div th:replace="~{ nav::navbar}"></div>
-<form action="/product/add" method="post">
-
+<form action="/category/create" method="post">
     <input type="text" name="title">
-    <input type="text" name="price">
-    <button type="submit">추가</button>
+   <button type="submit">생성</button>
 </form>
+
+
+
 </body>
 </html>

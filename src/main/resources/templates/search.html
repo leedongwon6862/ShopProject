@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>상품 목록 리스트</title>
+    <title>회원 가입</title>
     <link rel="stylesheet" href="/main.css">
 </head>
 <body>
@@ -12,8 +12,7 @@
 
 
 
-
-<div class="card" th:each="i : ${items}">
+<div class="card" th:each="i : ${searchedItemList}">
     <img src="https://placehold.co/300" alt="">
     <div>
         <a th:href="@{|/product/detail/${i.id}|}">
@@ -27,12 +26,11 @@
 
     </div>
 
+
+
 </div>
 
 
-<span th:each="page: ${#numbers.sequence(0, items.totalPages - 1)}">
-<a th:href="@{|/product/list?page=${page}|}" th:text="${page + 1}">1번페이지</a>
-</span>
 
 </body>
 </html>

@@ -42,8 +42,11 @@ public class MemberController {
     public String myPage(Authentication auth){
         // html 안에 로그인 된 유저 정보 넣기 -> 타임 리프 문법 쓰면 편함
 
-        MyUserDetailsService.CustomUser result =(MyUserDetailsService.CustomUser) auth.getPrincipal();
-        System.out.println(result.displayName);
+
         return "mypage";
     }
+
+
+
+
 }

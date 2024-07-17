@@ -1,6 +1,8 @@
 package com.example.project.item;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class ItemService {
     }
 
     //상품 목록 로직
-    public List<Item> list() {
-        return itemRepository.findAll();
+    public Page<Item> list(Pageable pageable) {
+        return itemRepository.findAll(pageable);
     }
 
     //상품 상세 보기

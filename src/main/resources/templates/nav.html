@@ -13,6 +13,10 @@
     <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
     <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
     <a href="/my-page">마이페이지</a>
+    <form action="/product/search" method="post" >
+        <input type="text" name="searchKeyword" id="searchKeyword" style="display : inline">
+        <button type="submit">검색</button>
+    </form>
 </div>
 </body>
 </html>
