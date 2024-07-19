@@ -1,9 +1,12 @@
 package com.example.project.member;
 
 
+import com.example.project.sales.Sales;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +20,7 @@ public class Member {
     private String username;
     private String password;
     private String displayName; //닉네임
+
+    @OneToMany(mappedBy = "member" ,cascade = CascadeType.REMOVE)
+    private List<Sales> salesList ;
 }

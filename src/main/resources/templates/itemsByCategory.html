@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 목록 리스트</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="~{ nav::navbar}"></div>
+
+<div th:each="data : ${itemByCategory}">
+    <img src="https://placehold.co/300" alt="">
+    <div>
+   <div th:text="${data.title}"> Title</div>
+   <div th:text="${data.price}"> Price</div>
+    </div>
+</div>
+
+
+</body>
+</html>

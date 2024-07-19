@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 삭제</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="~{ nav::navbar}"></div>
+
+
+
+<h1>Add to Cart</h1>
+<div>
+    <h2 th:text="${item.title}">Item Title</h2>
+    <p th:text="'Price: ' + ${item.price}">Item Price</p>
+    <form th:action="@{/cart/add}" method="post">
+        <input type="hidden" name="itemId" th:value="${item.id}" />
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" />
+        <button type="submit">Add to Cart</button>
+    </form>
+</div>
+<a href="/cart">Back to Items</a>
+
+
+
+</body>
+</html>

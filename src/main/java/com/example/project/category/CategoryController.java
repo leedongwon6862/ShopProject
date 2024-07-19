@@ -1,5 +1,6 @@
 package com.example.project.category;
 
+import com.example.project.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +25,13 @@ public class CategoryController {
         return "categoryForm";
     }
 
-   //카테고리 생성 기능
+    //카테고리 생성 기능
     @PostMapping("/create")
     public String create(String title) {
+
         Category category = new Category();
         category.setTitle(title);
+
         categoryService.save(category);
         return "redirect:/product/list";
 
@@ -37,7 +40,7 @@ public class CategoryController {
     //카테고리 목록 보여 주기
     @GetMapping("/list")
     public String categoryList(String title, Model model){
-       List<Category> categoryList = categoryService.getCategoryList(title);
+       List<Category> categoryList = categoryService.getCategoryList();
         model.addAttribute("categoryList", categoryList);
         return "categoryList";
     }
@@ -58,7 +61,27 @@ public class CategoryController {
         return "redirect:/category/list";
     }
 
+    //카테고리 삭제 폼 보여 주기
+    @GetMapping("/delete/{id}")
+    public String categoryDelete(@PathVariable("id")Long id,Model model){
+       Category category = categoryService.getCategoryById(id);
+        model.addAttribute("category" ,category);
+        return "categoryDelete";
+    }
+
+    //카테고리 삭제 하기
+    @PostMapping("/delete/{id}")
+    public String categoryDelete(@PathVariable("id")Long id){
+        categoryService.deleteCategory(id);
+        return "redirect:/category/list";
+    }
 
 
 
-}
+    }
+
+
+
+
+
+

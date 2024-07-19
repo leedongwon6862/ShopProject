@@ -1,5 +1,7 @@
 package com.example.project.item;
 
+import com.example.project.category.Category;
+import com.example.project.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +15,14 @@ import java.util.Optional;
 public class ItemService {
 
     private final ItemRepository itemRepository;
-
+    private final CategoryService categoryService;
     //상품 생성 로직
-    public void addPost(String title, Integer price) {
+    public void addPost(String title, Integer price ,Long categoryId) {
+        Category category = categoryService.getCategoryById(categoryId);
         Item item = new Item();
         item.setTitle(title);
         item.setPrice(price);
+        item.setCategory(category);
         itemRepository.save(item);
     }
 
@@ -51,6 +55,7 @@ public class ItemService {
     }
 
 
-
-
+    public List<Item> itemsByCategory(Category category) {
+        return itemRepository.findByCategory(category);
+    }
 }

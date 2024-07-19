@@ -1,10 +1,13 @@
 package com.example.project.item;
 
+import com.example.project.cartItem.CartItem;
 import com.example.project.category.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @Setter
@@ -23,5 +26,8 @@ public class Item {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "item")
+    private List<CartItem> cartItemList;
 
 }

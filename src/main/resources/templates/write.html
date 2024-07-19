@@ -11,6 +11,11 @@
 
     <input type="text" name="title">
     <input type="text" name="price">
+
+    <label for="category">Category:</label>
+    <select id="category" name="categoryId">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.title}"></option>
+    </select><br><br>
     <button type="submit">추가</button>
 </form>
 </body>

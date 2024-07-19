@@ -1,5 +1,6 @@
 package com.example.project.item;
 
+import com.example.project.category.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
 
     Page<Item> findPageBy(Pageable page);
     List<Item> findByTitleContains(String title);
+
+
+    List<Item> findByCategory(Category category);
 }

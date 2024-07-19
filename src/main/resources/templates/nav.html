@@ -17,6 +17,17 @@
         <input type="text" name="searchKeyword" id="searchKeyword" style="display : inline">
         <button type="submit">검색</button>
     </form>
+
+    <h4>카테고리</h4>
+
+    <div th:each="category : ${categories}">
+        <a th:href="@{|/product/items/category/${category.id}|}" th:text="${category.title}"></a>
+    </div>
+    <a href="/cart">장바구니</a>
+
 </div>
+
+
+
 </body>
 </html>

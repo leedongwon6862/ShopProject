@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 삭제</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="~{ nav::navbar}"></div>
+
+
+<h1>장바구니</h1>
+<div>
+    <div th:each="cartItem : ${cartItems}">
+        <span th:text="${cartItem.item.title} ">Item Title</span> -
+        <span th:text="${cartItem.item.price}+'원'">Price</span> -
+        <span th:text="${cartItem.quantity}+'개'">Quantity</span>
+        <form th:action="@{/cart/remove}" method="post">
+            <input type="hidden" name="cartItemId" th:value="${cartItem.id}" />
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+</div>
+
+
+
+<a href="/product/list">Continue Shopping</a>
+
+</body>
+</html>
